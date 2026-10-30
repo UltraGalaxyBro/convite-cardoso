@@ -1,0 +1,222 @@
+:root {
+    --vinho: #641c25;
+    --vinho-claro: #8e1f2b;
+    --dourado: #a77c37;
+    --dourado-borda: #b58a42;
+    --pergaminho: #eadbbd;
+    --tinta: #4b3a2b;
+    --tinta-suave: #5b4938;
+    /* Tons escurecidos em relação ao original para atingir contraste 4,5:1 sobre o pergaminho. */
+    --sobretitulo: #7a5622;
+    --menu: #6d4b27;
+    --display: 'Cinzel', 'Times New Roman', serif;
+    --corpo: 'Cormorant Garamond', Garamond, Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: radial-gradient(ellipse at top, rgba(167,124,55,.14), transparent 45%), #2b211d;
+    color: #29231e;
+    font-family: var(--corpo);
+    -webkit-text-size-adjust: 100%;
+}
+img { max-width: 100%; height: auto; }
+h1, h2, h3, p, ul { margin: 0; }
+
+.pagina { min-height: 100vh; padding: 1.5rem 1rem; }
+.pergaminho {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 5vw, 4rem);
+    background-color: var(--pergaminho);
+    background-image:
+        radial-gradient(circle at 12% 15%, rgba(255,255,255,.36), transparent 25%),
+        radial-gradient(circle at 85% 80%, rgba(126,83,38,.10), transparent 30%),
+        repeating-linear-gradient(0deg, rgba(93,64,34,.025) 0, rgba(93,64,34,.025) 1px, transparent 1px, transparent 4px);
+    border: 1px solid var(--dourado-borda);
+    box-shadow: 0 20px 70px rgba(0,0,0,.38), inset 0 0 0 7px rgba(167,124,55,.10);
+}
+
+/* ---- Tipografia ---- */
+.sobretitulo {
+    color: var(--sobretitulo);
+    font-family: var(--display);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+.titulo {
+    margin-top: 1rem;
+    color: var(--vinho);
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: .025em;
+}
+.titulo-grande { font-size: clamp(2.25rem, 9vw, 3.75rem); }
+.subtitulo { color: var(--vinho); font-family: var(--display); font-size: 1.4rem; font-weight: 400; }
+.homenageada {
+    margin: .75rem 0 1.25rem;
+    color: var(--vinho);
+    font-family: var(--display);
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    font-weight: 400;
+}
+.texto { color: var(--tinta-suave); font-size: 1.15rem; line-height: 1.6; }
+.texto-grande { color: var(--tinta); font-size: clamp(1.2rem, 3.5vw, 1.45rem); }
+.texto-italico { max-width: 42rem; margin: 0 auto; font-style: italic; font-size: 1.2rem; }
+.centro { text-align: center; }
+.link { color: var(--vinho); font-family: var(--display); font-size: .8rem; letter-spacing: .06em; }
+.link:hover { color: var(--vinho-claro); }
+
+.filete {
+    height: 1px;
+    width: 100%;
+    max-width: 36rem;
+    margin: 1rem auto;
+    background: linear-gradient(90deg, transparent, var(--dourado) 20%, var(--dourado) 80%, transparent);
+}
+.filete.curto { max-width: 28rem; margin: 1.5rem auto; }
+.filete.divisor { margin: 3.5rem auto; }
+
+/* ---- Cabeçalho e rodapé ---- */
+.cabecalho { margin-bottom: 2.5rem; text-align: center; }
+.menu { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; }
+.menu a {
+    color: var(--menu);
+    font-family: var(--display);
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: .5rem 0;
+    transition: color .2s ease;
+}
+.menu a:hover { color: var(--vinho-claro); }
+.rodape { margin-top: 3.5rem; text-align: center; }
+.rodape p { color: var(--menu); font-family: var(--display); font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; }
+
+/* ---- Seções ---- */
+.secao { max-width: 48rem; margin: 0 auto; scroll-margin-top: 1.5rem; }
+.estreita { max-width: 42rem; }
+.secao > * + * { margin-top: 2rem; }
+.brasao { display: block; width: clamp(9rem, 32vw, 13rem); margin: 0 auto 1.5rem; mix-blend-mode: multiply; }
+.detalhes { padding: 1.75rem 0; border-block: 1px solid rgba(181,138,66,.6); }
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    border: 1px solid #d4b16c;
+    background: linear-gradient(135deg, #76232c, #4f151d);
+    padding: 1rem 1.5rem;
+    color: #f4e5c5;
+    font-family: var(--display);
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 5px 14px rgba(70,25,20,.2), inset 0 0 0 1px rgba(255,255,255,.08);
+    transition: transform .2s ease, filter .2s ease;
+}
+.botao:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.botao.largo { width: 100%; }
+
+.cartao {
+    border: 1px solid rgba(167,124,55,.65);
+    background: rgba(255,250,237,.35);
+    padding: clamp(1.1rem, 3vw, 2rem);
+    box-shadow: inset 0 0 0 4px rgba(167,124,55,.06);
+}
+.grade { display: grid; gap: 1.5rem; }
+@media (min-width: 48rem) { .grade { grid-template-columns: 1fr 1fr; } }
+
+.lista { margin-top: 1rem; padding: 0; list-style: none; color: var(--tinta-suave); font-size: 1.15rem; line-height: 1.8; }
+.lista li { padding-left: 1.5rem; text-indent: -1.5rem; }
+.lista li::before { content: '✧'; display: inline-block; width: 1.5rem; text-indent: 0; color: var(--dourado); }
+
+.paleta { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1.25rem; padding: 0; list-style: none; }
+.paleta li { width: 6rem; color: var(--tinta-suave); font-size: 1rem; }
+.amostra {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto .5rem;
+    border: 2px solid rgba(181,138,66,.7);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+/* ---- Formulário ---- */
+.formulario > * + * { margin-top: 1.5rem; }
+fieldset.campo { border: 0; padding: 0; margin-inline: 0; min-width: 0; }
+.rotulo {
+    display: block;
+    margin-bottom: .55rem;
+    padding: 0;
+    color: var(--vinho);
+    font-family: var(--display);
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+}
+.entrada {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(141,106,56,.55);
+    border-radius: 0;
+    background: rgba(255,252,244,.68);
+    padding: .8rem .9rem;
+    color: #332820;
+    font-family: var(--corpo);
+    font-size: 1.15rem; /* >= 16px evita o zoom automático no iPhone */
+}
+textarea.entrada { resize: vertical; }
+.entrada::placeholder { color: #7d6a55; }
+.entrada:focus { outline: none; border-color: var(--vinho); box-shadow: 0 0 0 3px rgba(100,28,37,.18); }
+.entrada[aria-invalid="true"] { border-color: var(--vinho-claro); }
+.erro { margin-top: .4rem; color: var(--vinho-claro); font-size: 1rem; }
+
+.escolhas { display: grid; gap: .75rem; }
+@media (min-width: 40rem) { .escolhas { grid-template-columns: 1fr 1fr; } }
+.escolha {
+    position: relative;
+    display: block;
+    border: 1px solid rgba(141,106,56,.55);
+    padding: .9rem;
+    color: var(--tinta-suave);
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.escolha input { position: absolute; opacity: 0; pointer-events: none; }
+.escolha:has(input:checked) {
+    border-color: var(--vinho);
+    background: rgba(100,28,37,.09);
+    color: var(--vinho);
+    box-shadow: inset 0 0 0 1px rgba(100,28,37,.12);
+}
+.escolha:has(input:focus-visible) { outline: 2px solid var(--vinho); outline-offset: 2px; }
+
+.aviso { border: 1px solid rgba(167,124,55,.5); background: #f1e5ca; padding: 1rem; text-align: center; }
+.aviso .texto { margin-top: .25rem; font-size: 1.05rem; }
+.nota { color: var(--menu); font-size: 1rem; line-height: 1.5; text-align: center; }
+
+a:focus-visible, .botao:focus-visible { outline: 2px solid var(--vinho); outline-offset: 3px; }
+
+/* ---- Entrada suave ---- */
+@keyframes surgir { from { opacity: 0; transform: translateY(12px); } }
+.pergaminho { animation: surgir .8s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
