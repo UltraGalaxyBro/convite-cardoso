@@ -24,3 +24,15 @@ Para testar a prévia, cole o link numa conversa do WhatsApp: deve aparecer o br
 ## Como funciona a confirmação
 
 O convidado preenche o formulário e o WhatsApp abre com a mensagem pronta. Ele ainda precisa tocar em **Enviar**. Nada é gravado no site.
+
+## Música
+
+1. Coloque o arquivo em `audio/` (ex.: `audio/musica.mp3`). Prefira MP3 de até ~3 MB: ele só é baixado quando o convidado abre os portões.
+2. Em `js/config.js`, preencha `musica: 'audio/musica.mp3'`.
+3. Para começar num trecho específico, preencha `musicaInicio` em `'min:seg'` (ex.: `'1:15'`). Ao terminar, a música volta para esse mesmo ponto.
+
+A música começa no toque que abre os portões (os navegadores não permitem som antes de um gesto do visitante)
+e pode ser silenciada pelo botão de som na barra do topo; o site lembra a escolha.
+Ela entra e sai com fade (sobe ao começar, desce nos últimos 3 segundos antes de repetir).
+No iPhone o volume do site não pode ser ajustado por código, então lá não há fade; deixe o próprio arquivo com volume moderado.
+Use apenas músicas com licença de uso: o site é público.

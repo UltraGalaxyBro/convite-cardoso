@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#2b211d">
     <title>Uma Convocação Real | Casa Cardoso</title>
-    <meta name="description" content="Vossa presença é requisitada na celebração em honra a Débora Barbosa Borges Cardoso, em 13 de março de 2027, em Goiânia.">
+    <meta name="description" content="Vossa presença é requisitada na celebração dos 30 anos de Débora Barbosa Borges Cardoso, em 13 de março de 2027, em Goiânia.">
 
     <!-- Prévia do link no WhatsApp e redes sociais. O WhatsApp não executa JavaScript,
          então estes textos não vêm do config.js: altere-os aqui se os dados mudarem.
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:title" content="Uma Convocação Real — Casa Cardoso">
-    <meta property="og:description" content="Em honra a Débora Barbosa Borges Cardoso · 13 de março de 2027 · Goiânia — GO">
+    <meta property="og:description" content="Os 30 anos de Débora Barbosa Borges Cardoso · 13 de março de 2027 · Goiânia — GO">
     <meta property="og:image" content="https://ultragalaxybro.github.io/convite-cardoso/img/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -24,37 +24,146 @@
     <link rel="icon" href="img/brasao.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=UnifrakturMaguntia&display=swap">
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Decide antes da pintura se os portões aparecem: só com JS e sem preferência por
+         movimento reduzido. Sem JS, o convite aparece direto. -->
+    <script>
+        (function () {
+            var html = document.documentElement;
+            html.classList.add('js');
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            html.classList.add('com-portoes');
+            // Se o main.js não carregar, os portões não podem prender o convidado do lado de fora.
+            setTimeout(function () {
+                if (!html.classList.contains('pronto')) html.classList.remove('com-portoes');
+            }, 6000);
+        })();
+    </script>
     <script src="js/config.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
+
+<!-- Ornamentos reutilizados -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="flor-de-lis" viewBox="0 0 40 40">
+        <path d="M20 1c4.5 6.5 5.5 14 0 22.5C14.5 15 15.5 7.5 20 1z"/>
+        <path d="M17.6 22.8C9.5 24.5 3 19.5 4.6 11.2c2.3 4.6 6.7 7.1 10.7 7.3-1.6-2.2-1.8-4.6-.2-6.4 1.7 3.3 2.4 6.9 2.5 10.7z"/>
+        <path d="M22.4 22.8c8.1 1.7 14.6-3.3 13-11.6-2.3 4.6-6.7 7.1-10.7 7.3 1.6-2.2 1.8-4.6.2-6.4-1.7 3.3-2.4 6.9-2.5 10.7z"/>
+        <rect x="12.5" y="23.5" width="15" height="3.2" rx="1"/>
+        <path d="M18.3 27h3.4l2.8 10.5-4.5-3-4.5 3z"/>
+    </symbol>
+    <symbol id="canto" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M4 116V4h112" stroke-width="1.6"/>
+        <path d="M12 98V12h86" stroke-width=".9"/>
+        <path d="M12 46c19 0 34-15 34-34" stroke-width="1.2"/>
+        <path d="M46 12c9 9 21 9 30 2M12 46c9 9 9 21 2 30" stroke-width="1"/>
+        <path d="M76 14c4-3 9-3 12 1-4 2-8 2-12-1zM14 76c-3 4-3 9 1 12 2-4 2-8-1-12z" fill="currentColor" stroke-width=".6"/>
+        <circle cx="26" cy="26" r="6" stroke-width="1"/>
+        <circle cx="26" cy="26" r="2.2" fill="currentColor" stroke="none"/>
+        <path d="M4 4l7 7" stroke-width="1"/>
+        <path d="M4 0l3.5 4L4 8 .5 4z" fill="currentColor" stroke="none"/>
+    </symbol>
+</svg>
+
+<!-- Abertura: os portões do castelo -->
+<div class="portoes" aria-hidden="true">
+    <div class="porta porta-esquerda">
+        <span class="ferragem ferragem-alta"></span>
+        <span class="ferragem ferragem-baixa"></span>
+        <span class="argola"></span>
+    </div>
+    <div class="porta porta-direita">
+        <span class="ferragem ferragem-alta"></span>
+        <span class="ferragem ferragem-baixa"></span>
+        <span class="argola"></span>
+    </div>
+    <div class="portoes-luz"></div>
+    <div class="portoes-titulo">
+        <svg class="portoes-flor"><use href="#flor-de-lis"/></svg>
+        <p class="portoes-casa">Casa Cardoso</p>
+        <p class="portoes-legenda">Tocai para abrir os portões</p>
+    </div>
+</div>
+
+<!-- Barra de navegação -->
+<header class="barra">
+    <div class="barra-interna">
+        <a href="#convocacao" class="barra-logo surge">Casa Cardoso</a>
+        <button type="button" class="barra-pilula surge" style="--atraso:200ms" aria-expanded="false" aria-controls="menu">
+            <span class="pilula-rotulo">Navegar</span>
+        </button>
+        <div class="barra-acoes">
+            <button type="button" class="som surge" style="--atraso:300ms" aria-label="Tocar música" hidden>
+                <svg class="icone-som" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/>
+                    <path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <svg class="icone-mudo" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/>
+                    <path d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <svg class="barra-flor surge" style="--atraso:400ms" aria-hidden="true"><use href="#flor-de-lis"/></svg>
+            <button type="button" class="hamburguer surge" style="--atraso:200ms" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+<audio id="musica" preload="none"></audio>
+
+<!-- Visor das fotos de inspiração -->
+<dialog class="visor" aria-label="Foto ampliada">
+    <figure class="visor-figura">
+        <img class="visor-img" alt="">
+        <figcaption class="visor-legenda"></figcaption>
+        <p class="visor-contador"></p>
+    </figure>
+    <button type="button" class="visor-botao visor-fechar" aria-label="Fechar">✕</button>
+    <button type="button" class="visor-botao visor-anterior" aria-label="Foto anterior">‹</button>
+    <button type="button" class="visor-botao visor-proxima" aria-label="Próxima foto">›</button>
+</dialog>
+
+<nav id="menu" class="menu-tela" aria-label="Seções do convite" inert>
+    <a href="#convocacao" style="--i:0">A Convocação</a>
+    <a href="#trajes" style="--i:1">O Decreto dos Trajes</a>
+    <a href="#confirmar" style="--i:2">Registro dos Convidados</a>
+    <p class="menu-data" style="--i:3"><span data-campo="dataExtenso"></span> · <span data-campo="cidade"></span></p>
+</nav>
+
 <main class="pagina">
     <div class="pergaminho">
-        <header class="cabecalho">
-            <p class="sobretitulo">Uma celebração da Casa Cardoso</p>
-            <div class="filete"></div>
-            <nav class="menu" aria-label="Seções do convite">
-                <a href="#convocacao">A convocação</a>
-                <a href="#trajes">Trajes da corte</a>
-                <a href="#confirmar">Confirmação</a>
-            </nav>
-        </header>
+        <div class="papel" aria-hidden="true"></div>
+        <div class="rolo rolo-topo" aria-hidden="true"></div>
+        <div class="rolo rolo-base" aria-hidden="true"></div>
+        <svg class="canto canto-no" aria-hidden="true"><use href="#canto"/></svg>
+        <svg class="canto canto-ne" aria-hidden="true"><use href="#canto"/></svg>
+        <svg class="canto canto-so" aria-hidden="true"><use href="#canto"/></svg>
+        <svg class="canto canto-se" aria-hidden="true"><use href="#canto"/></svg>
 
         <!-- I. Capa -->
-        <section id="convocacao" class="secao centro">
-            <img class="brasao" src="img/brasao.jpg" width="480" height="603" alt="Brasão da família Cardoso: escudo vermelho com dois leões dourados e um cardo, encimado por elmo de cavaleiro">
-            <p class="sobretitulo">Por ordem da nobre Casa Cardoso</p>
-            <h1 class="titulo titulo-grande">Uma Convocação Real</h1>
-            <div class="filete curto"></div>
-            <p class="texto texto-grande">
-                Vossa presença é requisitada para uma celebração digna dos grandes salões da realeza.
+        <section id="convocacao" class="secao heroi centro">
+            <p class="sobretitulo revelar">Uma celebração da Casa Cardoso</p>
+            <img class="brasao revelar revelar-escala" style="--atraso:150ms" src="img/brasao.jpg" width="480" height="603" alt="Brasão da família Cardoso: escudo vermelho com dois leões dourados e um cardo, encimado por elmo de cavaleiro">
+            <p class="sobretitulo revelar" style="--atraso:300ms">Por ordem da nobre Casa Cardoso</p>
+            <h1 class="titulo titulo-grande revelar" style="--atraso:450ms">Uma Convocação Real</h1>
+            <div class="filete curto revelar-linha" style="--atraso:650ms"></div>
+            <p class="texto texto-grande capitular revelar" style="--atraso:750ms">
+                Trinta primaveras completa a dama da Casa Cardoso, e vossa presença é requisitada
+                para celebrá-las ao seu lado.
             </p>
 
-            <div class="detalhes">
-                <p class="sobretitulo">Em honra a</p>
+            <div class="detalhes revelar" style="--atraso:900ms">
+                <p class="sobretitulo">Em honra aos 30 anos de</p>
+                <figure class="retrato">
+                    <svg class="retrato-flor" aria-hidden="true"><use href="#flor-de-lis"/></svg>
+                    <div class="retrato-moldura">
+                        <img src="img/debora-retrato.jpg" width="640" height="800" alt="Retrato de Débora com uma coroa de flores brancas nos cabelos">
+                    </div>
+                </figure>
                 <h2 class="homenageada" data-campo="homenageada"></h2>
                 <p class="texto"><span data-campo="dataExtenso"></span> · <span data-campo="horario"></span></p>
                 <p class="texto" data-campo="local"></p>
@@ -63,29 +172,45 @@
                 <p><a class="link" data-campo="mapa" target="_blank" rel="noopener" hidden>Ver no mapa ↗</a></p>
             </div>
 
-            <p class="texto texto-italico">
-                Preparai vossos melhores trajes, pois os portões se abrirão para uma noite de encanto,
-                elegância e celebração sob os costumes medievais.
+            <div class="proclamacao revelar" style="--atraso:1050ms">
+                <p class="texto">
+                    Não será banquete de reis nem festim de grandes salões, mas uma celebração singela,
+                    preparada de bom grado e com o coração aberto. O maior tesouro desta noite
+                    será a vossa companhia.
+                </p>
+            </div>
+            <p class="texto texto-italico revelar" style="--atraso:1200ms">
+                Preparai vossos trajes, pois os portões se abrirão para uma noite de alegria,
+                encanto e celebração sob os costumes medievais.
             </p>
-            <a href="#trajes" class="botao">Conhecer o decreto dos trajes <span aria-hidden="true">✧</span></a>
+            <div class="revelar" style="--atraso:1350ms">
+                <a href="#trajes" class="botao">Conhecer o decreto dos trajes <span aria-hidden="true">✧</span></a>
+            </div>
+
+            <div class="luz-vela" aria-hidden="true"></div>
+            <canvas class="poeira" aria-hidden="true"></canvas>
         </section>
 
-        <div class="filete divisor"></div>
+        <div class="ornamento" aria-hidden="true">
+            <span class="ornamento-linha"></span>
+            <svg class="ornamento-flor"><use href="#flor-de-lis"/></svg>
+            <span class="ornamento-linha"></span>
+        </div>
 
         <!-- II. Trajes -->
         <section id="trajes" class="secao">
             <div class="centro">
-                <p class="sobretitulo">Segundo decreto da Casa Cardoso</p>
-                <h2 class="titulo">O Decreto dos Trajes</h2>
-                <div class="filete curto"></div>
-                <p class="texto texto-grande">
-                    Nossa celebração será envolvida pela atmosfera da era medieval.
-                    Convidamos todos a entrar no espírito da corte com trajes inspirados na nobreza de outrora.
-                </p>
+                <p class="sobretitulo revelar">Segundo decreto da Casa Cardoso</p>
+                <h2 class="titulo revelar" style="--atraso:120ms">O Decreto dos Trajes</h2>
+                <div class="filete curto revelar-linha" style="--atraso:300ms"></div>
             </div>
+            <p class="texto texto-grande capitular revelar" style="--atraso:400ms">
+                Nossa celebração será envolvida pela atmosfera da era medieval.
+                Convidamos todos a entrar no espírito da corte com trajes inspirados na nobreza de outrora.
+            </p>
 
             <div class="grade">
-                <article class="cartao">
+                <article class="cartao revelar">
                     <h3 class="subtitulo">Para os cavalheiros</h3>
                     <ul class="lista">
                         <li>Camisas de linho ou tecidos naturais</li>
@@ -94,7 +219,7 @@
                         <li>Cintos, broches e acessórios rústicos</li>
                     </ul>
                 </article>
-                <article class="cartao">
+                <article class="cartao revelar" style="--atraso:150ms">
                     <h3 class="subtitulo">Para as damas da corte</h3>
                     <ul class="lista">
                         <li>Vestidos longos e saias fluidas</li>
@@ -105,42 +230,89 @@
                 </article>
             </div>
 
-            <div class="cartao centro">
+            <section class="galeria" aria-labelledby="galeria-titulo">
+                <div class="centro revelar">
+                    <h3 id="galeria-titulo" class="titulo titulo-galeria">Inspirações da Corte</h3>
+                    <p class="texto galeria-intro">Alguns exemplos para inspirar vossos trajes. Tocai numa imagem para ampliá-la.</p>
+                </div>
+
+                <div class="galeria-grupo revelar">
+                    <h4 class="galeria-subtitulo">Para as damas</h4>
+                    <ul class="galeria-lista">
+                        <li style="--i:0"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/dama-1.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Corpete verde, camisa de linho e braçadeiras de couro</span>
+                        </button></li>
+                        <li style="--i:1"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/dama-2.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Vestido vinho e preto, cachecol e cintos de fivela</span>
+                        </button></li>
+                        <li style="--i:2"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/dama-3.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Blusa ombro a ombro, corpete de couro e saia em camadas</span>
+                        </button></li>
+                    </ul>
+                </div>
+
+                <div class="galeria-grupo revelar">
+                    <h4 class="galeria-subtitulo">Para os cavalheiros</h4>
+                    <ul class="galeria-lista">
+                        <li style="--i:0"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/cavalheiro-1.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Capuz e túnica escuros, com bolsas de couro na cintura</span>
+                        </button></li>
+                        <li style="--i:1"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/cavalheiro-2.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Túnica clara, cinto largo e braçadeiras</span>
+                        </button></li>
+                        <li style="--i:2"><button type="button" class="galeria-item">
+                            <span class="galeria-moldura"><img src="img/trajes/cavalheiro-3.jpg" width="600" height="900" loading="lazy" alt=""></span>
+                            <span class="galeria-legenda">Túnica vinho, capuz preto e botas de cano alto</span>
+                        </button></li>
+                    </ul>
+                </div>
+                <p class="galeria-dica" aria-hidden="true">Deslizai para ver mais ⟶</p>
+            </section>
+
+            <div class="cartao centro revelar">
                 <h3 class="subtitulo">As cores da Casa</h3>
                 <p class="texto">Uma paleta inspirada na nobreza medieval.</p>
                 <ul class="paleta">
-                    <li><span class="amostra" style="background:#641c25"></span>Vinho imperial</li>
-                    <li><span class="amostra" style="background:#a77c37"></span>Dourado antigo</li>
-                    <li><span class="amostra" style="background:#334b38"></span>Verde esmeralda</li>
-                    <li><span class="amostra" style="background:#29231e"></span>Ébano</li>
-                    <li><span class="amostra" style="background:#e9d9b8"></span>Marfim</li>
+                    <li style="--i:0"><span class="amostra" style="background:#641c25"></span>Vinho imperial</li>
+                    <li style="--i:1"><span class="amostra" style="background:#a77c37"></span>Dourado antigo</li>
+                    <li style="--i:2"><span class="amostra" style="background:#334b38"></span>Verde esmeralda</li>
+                    <li style="--i:3"><span class="amostra" style="background:#29231e"></span>Ébano</li>
+                    <li style="--i:4"><span class="amostra" style="background:#e9d9b8"></span>Marfim</li>
                 </ul>
             </div>
 
-            <p class="texto texto-italico centro">
+            <p class="texto texto-italico centro revelar">
                 Não é necessário adquirir uma fantasia elaborada. Um detalhe, uma cor ou um acessório
                 já será suficiente para honrar o espírito desta celebração.
-            </p>
-            <div class="centro">
+            </p>            <div class="centro revelar">
                 <a href="#confirmar" class="botao">Registrar minha resposta <span aria-hidden="true">✧</span></a>
             </div>
         </section>
 
-        <div class="filete divisor"></div>
+        <div class="ornamento" aria-hidden="true">
+            <span class="ornamento-linha"></span>
+            <svg class="ornamento-flor"><use href="#flor-de-lis"/></svg>
+            <span class="ornamento-linha"></span>
+        </div>
 
         <!-- III. Confirmação -->
         <section id="confirmar" class="secao estreita">
             <div class="centro">
-                <p class="sobretitulo">Terceiro decreto da Casa Cardoso</p>
-                <h2 class="titulo">Registro dos Convidados</h2>
-                <div class="filete curto"></div>
-                <p class="texto texto-grande">
-                    Para que os preparativos sejam organizados com o devido cuidado,
-                    solicitamos que registreis vossa resposta à convocação.
-                </p>
+                <p class="sobretitulo revelar">Terceiro decreto da Casa Cardoso</p>
+                <h2 class="titulo revelar" style="--atraso:120ms">Registro dos Convidados</h2>
+                <div class="filete curto revelar-linha" style="--atraso:300ms"></div>
             </div>
+            <p class="texto texto-grande capitular revelar" style="--atraso:400ms">
+                Para que os preparativos sejam organizados com o devido cuidado,
+                solicitamos que registreis vossa resposta à convocação.
+            </p>
 
-            <form id="formulario" class="cartao formulario" novalidate>
+            <form id="formulario" class="cartao formulario revelar" novalidate>
                 <div class="campo">
                     <label for="nome" class="rotulo">Nome completo</label>
                     <input id="nome" name="nome" class="entrada" required autocomplete="name" placeholder="Como devemos identificar-vos?">
@@ -177,8 +349,9 @@
                     <textarea id="observacoes" name="observacoes" class="entrada" rows="3" placeholder="Alguma informação que a anfitriã deva saber?"></textarea>
                 </div>
 
-                <button type="submit" id="enviar" class="botao largo">
-                    Enviar resposta pelo WhatsApp <span aria-hidden="true">✧</span>
+                <button type="submit" id="enviar" class="botao largo botao-selo">
+                    <span class="selo" aria-hidden="true">C</span>
+                    Selar e enviar pelo WhatsApp
                 </button>
                 <div id="aviso-whatsapp" class="aviso" hidden>
                     <p class="subtitulo">O mensageiro real será anunciado em breve.</p>
@@ -194,7 +367,7 @@
         </section>
 
         <footer class="rodape">
-            <div class="filete"></div>
+            <svg class="rodape-flor" aria-hidden="true"><use href="#flor-de-lis"/></svg>
             <p>Casa Cardoso · <span data-campo="dataExtenso"></span></p>
         </footer>
     </div>
